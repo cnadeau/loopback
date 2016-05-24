@@ -51,6 +51,7 @@ describe('User', function() {
 
     AccessToken = app.registry.getModel('AccessToken');
     app.model(AccessToken, { dataSource: 'db' });
+
     User.email = Email;
 
     // Update the AccessToken relation to use the subclass of User
