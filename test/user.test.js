@@ -30,6 +30,8 @@ describe('User', function() {
     // override the global app object provided by test/support.js
     // and create a local one that does not share state with other tests
     app = loopback({ localRegistry: true, loadBuiltinModels: true });
+    app.set('remoting', { errorHandler: { debug: true, log: false }});
+
     app.dataSource('db', { connector: 'memory' });
 
     // setup Email model, it's needed by User tests
@@ -49,7 +51,6 @@ describe('User', function() {
 
     AccessToken = app.registry.getModel('AccessToken');
     app.model(AccessToken, { dataSource: 'db' });
-
     User.email = Email;
 
     // Update the AccessToken relation to use the subclass of User

@@ -262,6 +262,7 @@ describe('relations - integration', function() {
     });
     lt.describe.whenCalledRemotely('GET', '/stores/:id/widgets/:fk', function() {
       it('should fail with statusCode 404', function() {
+        console.log(this.res.body.error);
         assert.equal(this.res.statusCode, 404);
         assert.equal(this.res.body.error.status, 404);
       });
